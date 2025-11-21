@@ -86,15 +86,29 @@ header nav .nav-hamburger {
   gap: 16px;
 }
 
-header nav .nav-hamburger::before {
-  content: '150';
-  font-size: 24px;
-  font-weight: 300;
-  letter-spacing: 0.1em;
+header nav .nav-150-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
 }
 
-header nav .nav-hamburger::after {
-  content: '|';
+header nav .nav-150-link .icon {
+  display: flex;
+  align-items: center;
+}
+
+header nav .nav-150-link .icon img {
+  width: auto;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+body.scrolled header nav .nav-150-link .icon img {
+  filter: none;
+}
+
+header nav .nav-separator {
   font-size: 24px;
   font-weight: 100;
   opacity: 0.5;

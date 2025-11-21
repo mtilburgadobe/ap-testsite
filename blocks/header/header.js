@@ -178,11 +178,33 @@ export default async function decorate(block) {
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
-      <span class="nav-hamburger-icon"></span>
-    </button>`;
+
+  // Add 150 link with icon
+  const link150 = document.createElement('a');
+  link150.href = 'https://150years.audemarspiguet.com/en';
+  link150.className = 'nav-150-link';
+  link150.setAttribute('aria-label', '150 Years');
+  const icon150Span = document.createElement('span');
+  icon150Span.className = 'icon icon-150';
+  link150.appendChild(icon150Span);
+  hamburger.appendChild(link150);
+
+  // Add separator
+  const separator = document.createElement('span');
+  separator.className = 'nav-separator';
+  separator.textContent = '|';
+  hamburger.appendChild(separator);
+
+  // Add hamburger button
+  const hamburgerButton = document.createElement('button');
+  hamburgerButton.type = 'button';
+  hamburgerButton.setAttribute('aria-controls', 'nav');
+  hamburgerButton.setAttribute('aria-label', 'Open navigation');
+  hamburgerButton.innerHTML = '<span class="nav-hamburger-icon"></span>';
+  hamburger.appendChild(hamburgerButton);
+
   if (navSections) {
-    hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
+    hamburgerButton.addEventListener('click', () => toggleMenu(nav, navSections));
   }
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
