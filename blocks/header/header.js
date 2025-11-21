@@ -8,6 +8,7 @@ function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
     const navSections = nav.querySelector('.nav-sections');
+    if (!navSections) return;
     const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
@@ -25,6 +26,7 @@ function closeOnFocusLost(e) {
   const nav = e.currentTarget;
   if (!nav.contains(e.relatedTarget)) {
     const navSections = nav.querySelector('.nav-sections');
+    if (!navSections) return;
     const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
@@ -132,8 +134,35 @@ export default async function decorate(block) {
     brandLink.closest('.button-container').className = '';
   }
 
+  // decorate nav tools icons
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    navTools.querySelectorAll('a').forEach((link) => {
+      const text = link.textContent.trim();
+      // Check if the text matches an icon pattern like :icon-name:
+      const iconMatch = text.match(/^:icon-(.+):$/);
+      if (iconMatch) {
+        const iconName = iconMatch[1];
+        link.setAttribute('aria-label', iconName.charAt(0).toUpperCase() + iconName.slice(1));
+        link.textContent = '';
+        const iconSpan = document.createElement('span');
+        iconSpan.className = `icon icon-${iconName}`;
+        link.appendChild(iconSpan);
+      }
+    });
+  }
+
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
+    // Remove button styling from nav section links
+    navSections.querySelectorAll('.button').forEach((button) => {
+      button.className = '';
+      const buttonContainer = button.closest('.button-container');
+      if (buttonContainer) {
+        buttonContainer.className = '';
+      }
+    });
+
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
       navSection.addEventListener('click', () => {
@@ -149,15 +178,47 @@ export default async function decorate(block) {
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
-      <span class="nav-hamburger-icon"></span>
-    </button>`;
-  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
+
+  // Add 150 link with icon
+  const link150 = document.createElement('a');
+  link150.href = 'https://150years.audemarspiguet.com/en';
+  link150.className = 'nav-150-link';
+  link150.setAttribute('aria-label', '150 Years');
+  const icon150Span = document.createElement('span');
+  icon150Span.className = 'icon icon-150';
+  link150.appendChild(icon150Span);
+  hamburger.appendChild(link150);
+
+  // Add separator
+  const separator = document.createElement('span');
+  separator.className = 'nav-separator';
+  separator.textContent = '|';
+  hamburger.appendChild(separator);
+
+  // Add hamburger button
+  const hamburgerButton = document.createElement('button');
+  hamburgerButton.type = 'button';
+  hamburgerButton.setAttribute('aria-controls', 'nav');
+  hamburgerButton.setAttribute('aria-label', 'Open navigation');
+  hamburgerButton.innerHTML = '<span class="nav-hamburger-icon"></span>';
+  hamburger.appendChild(hamburgerButton);
+
+  if (navSections) {
+    hamburgerButton.addEventListener('click', () => toggleMenu(nav, navSections));
+  }
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
-  toggleMenu(nav, navSections, isDesktop.matches);
-  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  if (navSections) {
+    if (!isDesktop.matches) {
+      toggleMenu(nav, navSections, isDesktop.matches);
+    }
+    isDesktop.addEventListener('change', () => {
+      if (!isDesktop.matches) {
+        toggleMenu(nav, navSections, isDesktop.matches);
+      }
+    });
+  }
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';

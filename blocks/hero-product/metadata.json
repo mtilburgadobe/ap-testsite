@@ -1,0 +1,41 @@
+{
+  "variantName": "hero-product",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2025-11-21T20:14:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.audemarspiguet.com/com/en/watch-collection/code-1159/26398BC.OO.D002CR.04.html",
+    "originPage": "Audemars Piguet product detail page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "purpose": "product-hero",
+    "imagePattern": "product-centered"
+  },
+  "contentPattern": {
+    "structure": "product image + brand heading + product title + details + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product detail pages",
+      "watch product showcases",
+      "luxury product presentations",
+      "centered product heroes"
+    ],
+    "notSuitableFor": [
+      "text-only hero sections",
+      "full-width background images",
+      "video backgrounds",
+      "multi-product displays"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/com/en/watch-collection/code-1159/26398bc-oo-d002cr-04"],
+    "reuseCount": 1,
+    "lastUsed": "2025-11-21T20:14:00.000Z"
+  }
+}

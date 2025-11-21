@@ -1,9 +1,36 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: transparent;
   width: 100%;
-  z-index: 2;
+  z-index: 1000;
   position: fixed;
+  top: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Scrolled header background */
+body.scrolled header .nav-wrapper {
+  background-color: var(--background-color);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Default white text for transparent header */
+header nav a:any-link {
+  color: white;
+}
+
+header nav button {
+  color: white;
+}
+
+/* Dark text when scrolled */
+body.scrolled header nav a:any-link {
+  color: var(--text-color);
+}
+
+body.scrolled header nav button {
+  color: var(--text-color);
 }
 
 header nav {
@@ -11,32 +38,28 @@ header nav {
   display: grid;
   grid-template:
     'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
+    'sections sections sections' 1fr / 1fr auto 1fr;
   align-items: center;
   gap: 0 24px;
   margin: auto;
-  max-width: 1248px;
+  width: 100%;
   height: var(--nav-height);
-  padding: 0 24px;
+  padding: 0 32px;
   font-family: var(--body-font-family);
 }
 
 header nav[aria-expanded='true'] {
   grid-template:
-    'hamburger brand' var(--nav-height)
-    'sections sections' 1fr
-    'tools tools' var(--nav-height) / auto 1fr;
+    'hamburger brand tools' var(--nav-height)
+    'sections sections sections' 1fr / 1fr auto 1fr;
   overflow-y: auto;
   min-height: 100dvh;
 }
 
 @media (width >= 900px) {
   header nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
+    grid-template: 'hamburger sections brand tools' var(--nav-height) / auto 1fr auto 1fr;
+    padding: 0 48px;
   }
 
   header nav[aria-expanded='true'] {
@@ -60,6 +83,35 @@ header nav .nav-hamburger {
   height: 22px;
   display: flex;
   align-items: center;
+  gap: 16px;
+}
+
+header nav .nav-150-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+header nav .nav-150-link .icon {
+  display: flex;
+  align-items: center;
+}
+
+header nav .nav-150-link .icon img {
+  width: auto;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+body.scrolled header nav .nav-150-link .icon img {
+  filter: none;
+}
+
+header nav .nav-separator {
+  font-size: 24px;
+  font-weight: 100;
+  opacity: 0.5;
 }
 
 header nav .nav-hamburger button {
@@ -68,7 +120,7 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: transparent;
   color: inherit;
   overflow: initial;
   text-overflow: initial;
@@ -130,23 +182,38 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 
 @media (width >= 900px) {
   header nav .nav-hamburger {
+    display: flex;
+    visibility: visible;
+  }
+
+  header nav .nav-hamburger button {
     display: none;
-    visibility: hidden;
   }
 }
 
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 128px;
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header nav .nav-brand img {
-  width: 128px;
-  height: auto;
+  height: 40px;
+  width: auto;
+}
+
+header nav .nav-brand p {
+  margin: 0;
+}
+
+header nav .nav-brand a {
+  display: flex;
+  align-items: center;
 }
 
 /* sections */
@@ -155,6 +222,13 @@ header nav .nav-sections {
   flex: 1 1 auto;
   display: none;
   visibility: hidden;
+}
+
+/* Hide structural headings */
+header nav .nav-brand h1,
+header nav .nav-sections h2,
+header nav .nav-tools h2 {
+  display: none;
 }
 
 header nav[aria-expanded='true'] .nav-sections {
@@ -185,37 +259,26 @@ header nav .nav-sections ul > li > ul > li {
   header nav .nav-sections {
     display: block;
     visibility: visible;
-    white-space: nowrap;
   }
 
   header nav[aria-expanded='true'] .nav-sections {
+    display: block;
+    visibility: visible;
     align-self: unset;
   }
 
   header nav .nav-sections .nav-drop {
     position: relative;
-    padding-right: 16px;
+    padding-right: 0;
     cursor: pointer;
   }
 
   header nav .nav-sections .nav-drop::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0.5em;
-    right: 2px;
-    transform: rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
+    display: none;
   }
 
   header nav .nav-sections .nav-drop[aria-expanded='true']::after {
-    top: unset;
-    bottom: 0.5em;
-    transform: rotate(315deg);
+    display: none;
   }
 
   header nav .nav-sections ul {
@@ -265,4 +328,41 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+
+header nav .nav-tools ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+header nav .nav-tools a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+header nav .nav-tools .icon {
+  display: flex;
+  align-items: center;
+}
+
+header nav .nav-tools .icon img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+body.scrolled header nav .nav-tools .icon img {
+  filter: none;
 }
