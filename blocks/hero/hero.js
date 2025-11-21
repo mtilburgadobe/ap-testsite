@@ -24,7 +24,7 @@ export default function decorate(block) {
       const text = h1.textContent;
       // Check if this is the "Celebrating" headline
       if (text.includes('Celebrating') && text.includes('watch')) {
-        h1.innerHTML = '<strong>Celebrating</strong> the «Iconic<br>watch» prize';
+        h1.innerHTML = 'Celebrating <br><em>the «Iconic</em><br><em>watch» prize</em>';
       }
     }
   }
