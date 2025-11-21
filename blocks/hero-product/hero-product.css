@@ -1,0 +1,136 @@
+.hero-product-container {
+  padding: 0 !important;
+  margin-top: calc(-1 * var(--nav-height));
+}
+
+.hero-product-container .hero-product-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-product {
+  position: relative;
+  padding: calc(var(--nav-height) + 80px) 24px 60px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-product > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-product h1 {
+  max-width: 800px;
+  margin: 0 auto 16px;
+  color: white;
+  font-size: 36px;
+  font-weight: 100;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-product h2,
+.hero-product h3 {
+  max-width: 800px;
+  margin: 0 auto 24px;
+  color: white;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-product p {
+  max-width: 600px;
+  margin: 0 auto 16px;
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.hero-product a {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 12px 32px;
+  display: inline-block;
+  margin-top: 16px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.hero-product a:hover {
+  background-color: white;
+  color: black;
+}
+
+.hero-product picture {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.hero-product img {
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (width >= 768px) {
+  .hero-product {
+    padding: 140px 48px 100px;
+  }
+
+  .hero-product h1 {
+    font-size: 42px;
+  }
+
+  .hero-product h2,
+  .hero-product h3 {
+    font-size: 28px;
+  }
+}
+
+@media (width >= 900px) {
+  .hero-product {
+    padding: 160px 64px 120px;
+    min-height: 700px;
+  }
+
+  .hero-product h1 {
+    font-size: 48px;
+  }
+
+  .hero-product h2,
+  .hero-product h3 {
+    font-size: 32px;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero-product {
+    padding: 200px 80px 150px;
+    min-height: 800px;
+  }
+
+  .hero-product h1 {
+    font-size: 52px;
+  }
+}
