@@ -161,8 +161,14 @@ export default async function decorate(block) {
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
   if (navSections) {
-    toggleMenu(nav, navSections, isDesktop.matches);
-    isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+    if (!isDesktop.matches) {
+      toggleMenu(nav, navSections, isDesktop.matches);
+    }
+    isDesktop.addEventListener('change', () => {
+      if (!isDesktop.matches) {
+        toggleMenu(nav, navSections, isDesktop.matches);
+      }
+    });
   }
 
   const navWrapper = document.createElement('div');
