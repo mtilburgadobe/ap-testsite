@@ -1,4 +1,4 @@
-import { getMetadata, decorateIcons } from '../../scripts/aem.js';
+import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
@@ -150,8 +150,6 @@ export default async function decorate(block) {
         link.appendChild(iconSpan);
       }
     });
-    // Load the icon images
-    decorateIcons(navTools);
   }
 
   const navSections = nav.querySelector('.nav-sections');
