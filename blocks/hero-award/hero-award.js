@@ -1,7 +1,24 @@
 export default function decorate(block) {
   // Check if block has an image
-  if (!block.querySelector(':scope > div:first-child picture')) {
+  const hasImage = block.querySelector(':scope > div:first-child picture');
+  if (!hasImage) {
     block.classList.add('no-image');
+  }
+
+  // Move content from second div to first div (to overlay on image)
+  const firstDiv = block.querySelector(':scope > div:first-child > div');
+  const secondDiv = block.querySelector(':scope > div:nth-child(2) > div');
+
+  if (firstDiv && secondDiv) {
+    // Move all children from second div to first div
+    while (secondDiv.firstChild) {
+      firstDiv.appendChild(secondDiv.firstChild);
+    }
+    // Remove the now-empty second div container
+    const secondContainer = block.querySelector(':scope > div:nth-child(2)');
+    if (secondContainer) {
+      secondContainer.remove();
+    }
   }
 
   // Add hero-page class to body for transparent header
