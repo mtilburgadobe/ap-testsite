@@ -168,8 +168,8 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 
 @media (width >= 900px) {
   header nav .nav-hamburger {
-    display: none;
-    visibility: hidden;
+    display: flex;
+    visibility: visible;
   }
 }
 
@@ -239,12 +239,13 @@ header nav .nav-sections ul > li > ul > li {
 
 @media (width >= 900px) {
   header nav .nav-sections {
-    display: block;
-    visibility: visible;
-    white-space: nowrap;
+    display: none;
+    visibility: hidden;
   }
 
   header nav[aria-expanded='true'] .nav-sections {
+    display: block;
+    visibility: visible;
     align-self: unset;
   }
 
