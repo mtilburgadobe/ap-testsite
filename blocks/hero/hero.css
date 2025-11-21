@@ -17,19 +17,21 @@
 }
 
 .hero h1 {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   color: white;
   font-size: 48px;
   font-weight: 100;
-  line-height: 1.2;
+  line-height: 1.15;
   text-align: left;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .hero h1 strong {
-  font-weight: 100;
+  font-weight: 500;
+  display: block;
+  margin-bottom: -0.1em;
 }
 
 .hero h2,

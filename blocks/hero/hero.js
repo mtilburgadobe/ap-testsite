@@ -17,5 +17,15 @@ export default function decorate(block) {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Call once to set initial state
+
+    // Restructure H1 text for proper formatting
+    const h1 = block.querySelector('h1');
+    if (h1) {
+      const text = h1.textContent;
+      // Check if this is the "Celebrating" headline
+      if (text.includes('Celebrating') && text.includes('watch')) {
+        h1.innerHTML = '<strong>Celebrating</strong> the «Iconic<br>watch» prize';
+      }
+    }
   }
 }
