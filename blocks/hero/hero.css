@@ -3,6 +3,11 @@
   margin-top: calc(-1 * var(--nav-height));
 }
 
+/* Hide the next section if it's a hero-award block (contains overflow content from hero) */
+.hero-container + .hero-award-container {
+  display: none;
+}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -13,12 +18,19 @@
   padding: calc(var(--nav-height) + 120px) 24px 80px;
   min-height: 500px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
-  max-width: 900px;
-  margin: 32px 0;
+  max-width: 500px;
+  margin: 0 0 32px;
   color: white;
   font-size: 48px;
   font-weight: 100;
@@ -45,8 +57,8 @@
 .hero h5,
 .hero h6,
 .hero p {
-  max-width: 1200px;
-  margin: 16px auto;
+  max-width: 500px;
+  margin: 0 0 24px;
   color: white;
   font-size: 16px;
   font-weight: 300;
@@ -60,6 +72,7 @@
   text-decoration: none;
   border-bottom: 1px solid white;
   transition: opacity 0.2s;
+  display: inline-block;
 }
 
 .hero a:hover {
@@ -68,7 +81,7 @@
 
 .hero picture {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   top: 0;
   left: 0;
   right: 0;
@@ -85,9 +98,20 @@
   left: 0;
 }
 
+@media (width >= 768px) {
+  .hero {
+    padding: 160px 48px 120px;
+  }
+
+  .hero h1,
+  .hero p {
+    max-width: 600px;
+  }
+}
+
 @media (width >= 900px) {
   .hero {
-    padding: 160px 32px 120px;
+    padding: 160px 64px 120px;
     min-height: 600px;
   }
 
@@ -99,7 +123,7 @@
 
 @media (width >= 1200px) {
   .hero {
-    padding: 200px 48px 150px;
+    padding: 200px 80px 150px;
     min-height: 700px;
   }
 
