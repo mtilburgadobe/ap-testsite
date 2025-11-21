@@ -11,30 +11,64 @@
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* colors - Audemars Piguet Dark Theme */
+  --background-color: #000;
+  --light-color: #1a1a1a;
+  --dark-color: #000;
+  --text-color: #fff;
+  --link-color: #fff;
+  --link-hover-color: rgba(255, 255, 255, 0.7);
+  --accent-color: #fff;
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  /* fonts - Audemars Piguet uses Helvetica Neue Web */
+  --body-font-family: "Helvetica Neue Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --heading-font-family: "Helvetica Neue Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  --heading-font-size-xxl: 48px;
+  --heading-font-size-xl: 36px;
+  --heading-font-size-l: 28px;
+  --heading-font-size-m: 24px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 18px;
+
+  /* font weights */
+  --body-font-weight: 300;
+  --heading-font-weight: 100;
+  --font-weight-bold: 700;
+
+  /* line heights */
+  --body-line-height: 1.49;
+  --heading-line-height: 1;
+
+  /* letter spacing */
+  --heading-letter-spacing: -0.56px;
+  --body-letter-spacing: 0;
+  --link-letter-spacing: 0.21px;
+
+  /* spacing */
+  --spacing-xs: 8px;
+  --spacing-s: 16px;
+  --spacing-m: 24px;
+  --spacing-l: 40px;
+  --spacing-xl: 68px;
+
+  /* buttons */
+  --button-background: transparent;
+  --button-color: #fff;
+  --button-border: 1px solid #fff;
+  --button-padding: 12px 24px;
+  --button-font-size: 14px;
+  --button-font-weight: 300;
+  --button-letter-spacing: 0.21px;
+  --button-hover-background: #fff;
+  --button-hover-color: #000;
+  --button-transition: all 0.3s ease;
 
   /* nav height */
   --nav-height: 64px;
@@ -42,31 +76,17 @@
 
 /* fallback fonts */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
+  font-family: helvetica-neue-fallback;
+  size-adjust: 100%;
   src: local('Arial');
 }
 
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    /* heading sizes - responsive */
+    --heading-font-size-xxl: 56px;
+    --heading-font-size-xl: 40px;
+    --heading-font-size-l: 32px;
   }
 }
 
@@ -77,7 +97,9 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
 }
 
 body.appear {
@@ -104,20 +126,39 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
-  scroll-margin: 40px;
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: var(--spacing-m);
+  scroll-margin-top: calc(var(--nav-height) + 1em);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+}
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+}
+
+h3 {
+  font-size: var(--heading-font-size-l);
+}
+
+h4 {
+  font-size: var(--heading-font-size-m);
+}
+
+h5 {
+  font-size: var(--heading-font-size-s);
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs);
+}
 
 p,
 dl,
@@ -125,44 +166,45 @@ ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 0;
+  margin-bottom: var(--spacing-s);
 }
 
 code,
 pre {
+  font-family: 'Courier New', Courier, monospace;
   font-size: var(--body-font-size-s);
 }
 
-pre {
-  padding: 16px;
-  border-radius: 8px;
+code {
+  padding: 0.125em;
   background-color: var(--light-color);
+}
+
+pre {
+  padding: var(--spacing-s);
+  overflow: scroll;
+  background-color: var(--light-color);
+}
+
+main pre {
+  background-color: var(--light-color);
+  padding: var(--spacing-s);
+  border-radius: 0.25em;
   overflow-x: auto;
   white-space: pre;
-}
-
-main > div {
-  margin: 40px 16px;
-}
-
-input,
-textarea,
-select,
-button {
-  font: inherit;
 }
 
 /* links */
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
-  overflow-wrap: break-word;
+  letter-spacing: var(--link-letter-spacing);
+  transition: opacity 0.3s ease;
 }
 
 a:hover {
-  color: var(--link-hover-color);
-  text-decoration: underline;
+  opacity: 0.7;
 }
 
 /* buttons */
@@ -171,29 +213,33 @@ button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
-  margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  margin: 0;
+  padding: var(--button-padding);
+  border: var(--button-border);
+  border-radius: 0;
+  background-color: var(--button-background);
+  color: var(--button-color);
   font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
   font-style: normal;
-  font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.2;
+  letter-spacing: var(--button-letter-spacing);
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
-  cursor: pointer;
-  overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  text-transform: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--button-transition);
 }
 
 a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: var(--button-hover-background);
+  color: var(--button-hover-color);
   cursor: pointer;
 }
 
@@ -205,9 +251,9 @@ button:disabled:hover {
 
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  background-color: transparent;
+  border: var(--button-border);
+  color: var(--button-color);
 }
 
 main img {
@@ -228,30 +274,39 @@ main img {
 }
 
 /* sections */
-main > .section {
-  margin: 40px 0;
+main .section {
+  padding: var(--spacing-xl) var(--spacing-m);
 }
 
-main > .section > div {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
+main .section.dark {
+  background-color: var(--dark-color);
+  color: var(--text-color);
 }
 
-main > .section:first-of-type {
-  margin-top: 0;
+main .section.light {
+  background-color: var(--light-color);
+  color: var(--text-color);
+}
+
+@media (width >= 600px) {
+  main .section {
+    padding: var(--spacing-xl) var(--spacing-l);
+  }
 }
 
 @media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
+  main .section {
+    padding: 80px var(--spacing-xl);
   }
 }
 
 /* section metadata */
-main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
-  margin: 0;
-  padding: 40px 0;
+}
+
+/* progressive section appearance */
+main .section[data-section-status='loading'],
+main .section[data-section-status='initialized'] {
+  display: none;
 }

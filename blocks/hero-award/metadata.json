@@ -1,0 +1,40 @@
+{
+  "variantName": "hero-award",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2025-11-21T10:38:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.audemarspiguet.com/com/en/home.html",
+    "originPage": "Audemars Piguet homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "purpose": "award-announcement",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "heading + description + CTA",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "award announcements",
+      "press releases",
+      "special announcements",
+      "text-heavy hero sections"
+    ],
+    "notSuitableFor": [
+      "image-heavy landing pages",
+      "video backgrounds",
+      "product showcases with images"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/com/en/home"],
+    "reuseCount": 1,
+    "lastUsed": "2025-11-21T10:38:00.000Z"
+  }
+}

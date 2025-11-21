@@ -1,0 +1,40 @@
+{
+  "variantName": "carousel-products",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2025-11-21T10:38:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.audemarspiguet.com/com/en/home.html",
+    "originPage": "Audemars Piguet homepage - 2025 novelties section",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "product-showcase",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + heading + description + CTA per slide",
+    "buttonCount": 1,
+    "imageCount": 9
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product carousels",
+      "watch collections",
+      "featured items showcase",
+      "portfolio displays"
+    ],
+    "notSuitableFor": [
+      "text-only content",
+      "single product displays",
+      "simple image galleries without descriptions"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/com/en/home"],
+    "reuseCount": 1,
+    "lastUsed": "2025-11-21T10:38:00.000Z"
+  }
+}
