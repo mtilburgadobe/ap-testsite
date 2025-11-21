@@ -1,0 +1,40 @@
+{
+  "variantName": "columns-text",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2025-11-21T10:38:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.audemarspiguet.com/com/en/home.html",
+    "originPage": "Audemars Piguet homepage - text sections",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "text-layout",
+    "imagePattern": "optional"
+  },
+  "contentPattern": {
+    "structure": "2-column text layout with optional images",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "side-by-side text sections",
+      "text with image layouts",
+      "content-heavy pages",
+      "informational sections"
+    ],
+    "notSuitableFor": [
+      "product showcases",
+      "image galleries",
+      "single-column content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/com/en/home"],
+    "reuseCount": 1,
+    "lastUsed": "2025-11-21T10:38:00.000Z"
+  }
+}
