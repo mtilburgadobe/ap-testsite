@@ -6,6 +6,24 @@ header .nav-wrapper {
   position: fixed;
 }
 
+/* Transparent header for hero sections */
+body.hero-page header .nav-wrapper {
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+body.hero-page.scrolled header .nav-wrapper {
+  background-color: var(--background-color);
+}
+
+body.hero-page header nav a:any-link {
+  color: white;
+}
+
+body.hero-page.scrolled header nav a:any-link {
+  color: currentcolor;
+}
+
 header nav {
   box-sizing: border-box;
   display: grid;
