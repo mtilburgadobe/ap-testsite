@@ -1,4 +1,4 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata, decorateIcons } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
@@ -132,6 +132,26 @@ export default async function decorate(block) {
   if (brandLink) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
+  }
+
+  // decorate nav tools icons
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    navTools.querySelectorAll('a').forEach((link) => {
+      const text = link.textContent.trim();
+      // Check if the text matches an icon pattern like :icon-name:
+      const iconMatch = text.match(/^:icon-(.+):$/);
+      if (iconMatch) {
+        const iconName = iconMatch[1];
+        link.setAttribute('aria-label', iconName.charAt(0).toUpperCase() + iconName.slice(1));
+        link.textContent = '';
+        const iconSpan = document.createElement('span');
+        iconSpan.className = `icon icon-${iconName}`;
+        link.appendChild(iconSpan);
+      }
+    });
+    // Load the icon images
+    decorateIcons(navTools);
   }
 
   const navSections = nav.querySelector('.nav-sections');

@@ -349,3 +349,18 @@ header nav .nav-tools a {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
+header nav .nav-tools .icon {
+  display: flex;
+  align-items: center;
+}
+
+header nav .nav-tools .icon img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+body.scrolled header nav .nav-tools .icon img {
+  filter: none;
+}
